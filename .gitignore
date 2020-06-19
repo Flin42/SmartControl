@@ -33,3 +33,4 @@ out/
 
 ### Project Specific Files
 application-develop*.properties
+logs/
