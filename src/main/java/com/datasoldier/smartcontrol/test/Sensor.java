@@ -1,29 +1,41 @@
 package com.datasoldier.smartcontrol.test;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class Sensor {
-    private String sensorName;
+    private String name;
     private int id;
     private String data;
+    private String type;
 
-    //id in the form of [ID][Data] eg 125
+    Sensor(String s) throws IOException {
+        //Converts Json string into correct object in order to access specific fields
+        ObjectMapper mapper = new ObjectMapper();
+        JsonFactory factory = mapper.getFactory();
+        JsonParser parser = factory.createParser(s);
+        JsonNode actualObj = mapper.readTree(parser);
+        //Assign each field to correct variable
+        data = String.valueOf(actualObj.get("valuestring"));
+        name = String.valueOf(actualObj.get("name"));
+        id = Integer.parseInt(String.valueOf(actualObj.get("sensor_id")));
+        type = String.valueOf(actualObj.get("valuetype"));
 
-    public String getSensor(String s) {
-        if(s.length()>6) {
-            return "This is not the right message structure";
-        }
+    }
 
-
-        id = Character.getNumericValue(s.charAt(0));
-        data = s.substring(1);
-
+    public String getSensor() {
         System.out.println("ID: " + id);
         System.out.println("Data value: " + data);
 
         if(id == 1) {
-            return evaluateTemp(Integer.parseInt(data));
+            System.out.print(data);
+            return data;
         } else {
             System.out.println("Could not identify sensor");
             return "No sensor identified or incorrect message structure";
@@ -44,6 +56,12 @@ public class Sensor {
         }
     }
 
+    //Humidity sensor
+
+
+    public String getData() {
+        return data;
+    }
 
 
 }
