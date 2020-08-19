@@ -8,13 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GreetingController{
 
-    @GetMapping("/greeting")
+    @GetMapping("/PiCar")
     public String greeting() {
-        return "greeting";
+        return "PiCar";
     }
 
-    @PostMapping("/greeting")
-    public String result(@RequestParam("txt") String s){
+    @PostMapping("/PiCar")
+    public Model result(@RequestParam("txt") String s, Model model){
         if(s.equalsIgnoreCase("up")) {
             System.out.println("up");
         } else if(s.equalsIgnoreCase("right")) {
@@ -26,8 +26,7 @@ public class GreetingController{
         } else {
             System.out.println("not a direction");
         }
-        System.out.println(s);
-        return "result";
+        return model;
 
     }
 
