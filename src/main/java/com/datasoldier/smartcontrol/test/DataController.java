@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
@@ -17,8 +18,8 @@ public class DataController {
 
 
     @GetMapping()
-    //@Scheduled(fixedRate = 1000)
-    public static String response() throws IOException {
+    @Scheduled(fixedRate = 1000)
+    public static ModelAndView response() throws IOException {
         /*
         //Get JSon String from url
         String url = "http://192.168.1.42:8080/sensor/getvalue";
@@ -30,7 +31,11 @@ public class DataController {
         //Return data needed from sensor
         System.out.println(sensor.getData());
          */
-        return "GetData";
+
+        int i = 42;
+        ModelAndView mav = new ModelAndView("GetData");
+        mav.addObject("data" , i);
+        return mav;
 
 
 
