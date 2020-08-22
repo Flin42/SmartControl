@@ -20,7 +20,6 @@ public class DataController {
     @GetMapping()
     @Scheduled(fixedRate = 1000)
     public static ModelAndView response() throws IOException {
-        /*
         //Get JSon String from url
         String url = "http://192.168.1.42:8080/sensor/getvalue";
         RestTemplate restTemplate = new RestTemplate();
@@ -30,11 +29,13 @@ public class DataController {
         Sensor sensor = new Sensor(jsonMessage);
         //Return data needed from sensor
         System.out.println(sensor.getData());
-         */
 
-        int i = 42;
+
         ModelAndView mav = new ModelAndView("GetData");
-        mav.addObject("data" , i);
+        mav.addObject("sensorName", "Sensor: " + sensor.getName());
+        mav.addObject("data" , "Reading: " + sensor.getData());
+        mav.addObject("ID", "ID: "+ sensor.getID());
+        mav.addObject("type", "Type: "+ sensor.getType());
         return mav;
 
 

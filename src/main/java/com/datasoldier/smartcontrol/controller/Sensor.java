@@ -62,6 +62,9 @@ public class Sensor {
     public String getData() {
         return data;
     }
+    public String getName() {return name;}
+    public int getID() {return id;}
+    public String getType(){return type;}
 
 
 }
