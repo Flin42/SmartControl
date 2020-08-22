@@ -1,4 +1,4 @@
-package com.datasoldier.smartcontrol.test;
+package com.datasoldier.smartcontrol.controller;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;

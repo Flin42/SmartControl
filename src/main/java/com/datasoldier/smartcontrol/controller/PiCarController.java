@@ -1,4 +1,4 @@
-package com.datasoldier.smartcontrol.test;
+package com.datasoldier.smartcontrol.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
