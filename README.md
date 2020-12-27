@@ -1,6 +1,4 @@
-
-- create `application-develop.properties` at the project root.
-- use below as a starting template for your development profile:
+A full stack experiment with a RaspberryPi.
 ```
 # LOGGING
 logging.file=logs/develop.log
