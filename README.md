@@ -1,4 +1,4 @@
-A full stack experiment with a RaspberryPi.
+A full stack experiment with a RaspberryPi and the Spring framework.
 ```
 # LOGGING
 logging.file=logs/develop.log
